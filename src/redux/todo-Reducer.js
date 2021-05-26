@@ -8,7 +8,8 @@ const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TASK:
             return {
-                ...state, tasks: [...state.tasks, { id: state.tasks.length, ...action.task }]
+                ...state, tasks: [...state.tasks, { id: 
+                    state.tasks.length ? state.tasks[state.tasks.length - 1].id + 1 : 0 , ...action.task }]
             }
         case DELETE_TASK:
             return {
@@ -17,7 +18,7 @@ const todoReducer = (state = initialState, action) => {
         case EDIT_TASK:
            
             return {
-                ...state, tasks: [...state.tasks.map(el => {if(el.id === action.id) return {text: action.text, id: el.id}
+                ...state, tasks: [...state.tasks.map(el => {if(el.id === action.id) return { id: el.id, text: action.text}
                 return el})]
             }
         default:
