@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 import { ToDoAdd } from './ToDoAdd'
 import { addTask, deleteTask, deleteAllTasks, editTask, completeTask, changeFilter} from '../../redux/todo-Reducer';
@@ -6,7 +6,8 @@ import { Task } from './Task';
 import { useState } from 'react';
 
 
-const ToDo = ({tasks, ...props}) => {
+const ToDo = ({...props}) => {
+    const tasks  = useSelector((state) => state.todo.tasks)
     const [filter, setFilter] = useState('All')
     const changeFilterAll = (e) =>{
         setFilter(e.currentTarget.value)
@@ -14,7 +15,6 @@ const ToDo = ({tasks, ...props}) => {
     const onDeleteAllTasks = () => {
         props.deleteAllTasks()
     }
-    console.log('asdas')
     let filteredTasks = filter === 'Completed' ? tasks.filter(task => task.completed === true) :
     filter === 'Incomplete' ? tasks.filter(task => task.completed === false) : tasks
     return (<div>
@@ -29,14 +29,9 @@ const ToDo = ({tasks, ...props}) => {
         
     </div>)
 }
-let mapStateToProps = state => {
-    return {
-        tasks: state.todo.tasks,
-        filter: state.todo.filter
-    }
-}
 
 
-export default connect(mapStateToProps,
+
+export default connect(null,
     { addTask, deleteTask, deleteAllTasks,
     editTask, completeTask, changeFilter})(ToDo)

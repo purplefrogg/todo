@@ -1,20 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const Task = ({ task, deleteTask, editTask, completeTask }) => {
     let  {text, id, completed} = task
     let [editMode, setEditMode] = useState(false)
     let [taskText, setTaskText] = useState(text)
-    let [isCompleted, setIsCompleted] = useState(completed)
-  
     const onDelete = () => {
         deleteTask(id)
     }
-    const onComplete = () => {
-        setIsCompleted(!isCompleted)
+    const onComplete = (e) => {
+        completeTask(true, id)
         }
-    useEffect(() => {
-        completeTask(isCompleted, id)
-    }, [isCompleted])
     const activateEditMode = () => {
         setEditMode(true)
     }
@@ -26,7 +21,7 @@ export const Task = ({ task, deleteTask, editTask, completeTask }) => {
         setTaskText(e.currentTarget.value)
     }
     return (<div>
-        <input type='checkbox' onClick={onComplete} defaultChecked={isCompleted} />
+        <input type='checkbox' onClick={onComplete} defaultChecked={completed} />
         {editMode &&
             <input autoFocus={true} onBlur={deactivateEditMode} onChange={onTextChange}
                 value={taskText}></input>}

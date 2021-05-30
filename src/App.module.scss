@@ -1,0 +1,22 @@
+$darkBackground: #141414;
+$darkBtnBg: rgb(68, 68, 68);
+$lightBackground: #ffffff;
+
+
+@mixin theme($background, $color){
+    background-color: $background;
+    color: $color;
+    transition: 0.2s;
+}
+
+.dark{
+    @include theme($darkBackground, white);
+    
+}
+.light{
+    @include theme($lightBackground, black);
+ }
+.app{
+    min-height: 100vh;
+    height: 100%;
+}
