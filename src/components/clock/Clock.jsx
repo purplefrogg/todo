@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 
-export let Clock = () => {
+export let Clock = (props) => {
     let [date, setDate] = useState(new Date())
     useEffect(() => {
         let newDate = new Date()
@@ -10,7 +10,7 @@ export let Clock = () => {
             setDate(newDate)
         }, 1000)
     }, [])
-    return (<div>
+    return (<div {...props}>
         {date.toLocaleTimeString()}
-    </div>)
+    </ div>)
 }

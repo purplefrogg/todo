@@ -3,8 +3,6 @@ const DELETE_TASK = "todo/DELETE_TASK"
 const DELETE_ALL_TASKS = "todo/DELETE_ALL_TASK"
 const EDIT_TASK = "todo/EDIT_TASK"
 const COMPLETE_TASK = "todo/COMPLETE_TASK"
-const CHANGE_FILTER = "todo/CHANGE_FILTER"
-
 
 const initialState = {
     tasks: [{ id: 0, text: 'hello', completed: false }],
@@ -41,10 +39,6 @@ const todoReducer = (state = initialState, action) => {
                     return el
                 })]
             }
-        case CHANGE_FILTER:
-            return {
-                ...state, filter: action.filter
-            }
         default:
             return state
     }
@@ -54,6 +48,5 @@ export const deleteTask = (id) => ({ type: DELETE_TASK, id })
 export const deleteAllTasks = () => ({ type: DELETE_ALL_TASKS })
 export const editTask = (text, id) => ({ type: EDIT_TASK, text, id })
 export const completeTask = (completed, id) => ({ type: COMPLETE_TASK, completed, id })
-export const changeFilter = (filter) => ({ type: CHANGE_FILTER, filter })
 
 export default todoReducer

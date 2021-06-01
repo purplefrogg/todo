@@ -9,7 +9,7 @@ const App = () => {
   const theme = useSelector((state) => state.app.theme)
   return (
       <div className={`${style.app} ${theme === 'dark' ? style.dark : style.light}`}>
-        <Header />
+        <Header className={style.header}/>
         <Todo />
         
       </div>

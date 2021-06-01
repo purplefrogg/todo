@@ -1,2 +1,25 @@
 @import '../../App.module.scss';
 
+.Header{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+       
+    flex-direction: row;
+   .clock{
+        font-size: 22px;
+        text-shadow: 0 0 5px blueviolet;
+   }
+   .btn{
+       border-radius: 100%;
+       border: 0;
+       width: 30px;
+       height: 30px;
+       text-align: center;
+       box-shadow: 0 0 10px blueviolet;
+       &:hover{
+        box-shadow: 0 0 5px blueviolet, 0 0 10px blueviolet, 0 0 10px blueviolet;
+       }
+   }
+  
+}
