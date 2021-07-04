@@ -1,25 +1,88 @@
-@import '../../App.module.scss';
 
 .Header{
-    margin-top: 5px;
     display: flex;
-    justify-content: space-between;
-       
+    margin: 5px auto;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: space-around;
     flex-direction: row;
+    .item{
+      
+    }
    .clock{
         font-size: 22px;
         text-shadow: 0 0 5px blueviolet;
    }
    .btn{
+       background: #000;
        border-radius: 100%;
        border: 0;
        width: 30px;
        height: 30px;
        text-align: center;
-       box-shadow: 0 0 10px blueviolet;
+       box-shadow: 0 0 10px var(--textColor);
        &:hover{
-        box-shadow: 0 0 5px blueviolet, 0 0 10px blueviolet, 0 0 10px blueviolet;
-       }
+        box-shadow: 0 0 5px var(--textColor), 0 0 10px var(--textColor), 0 0 10px var(--textColor);
+      }
    }
   
 }
+.menu{
+  z-index: 1;
+    ul {
+       
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+      }
+      
+      li {
+
+        display: block;
+        float: left;
+        padding: 1rem;
+        position: relative;
+        text-decoration: none;
+        transition-duration: 0.5s;
+      }
+        
+      li a {
+        color: var(--textColor);
+      }
+      
+      li:hover,
+      li:focus-within {
+        background-color: var(--backgroundColor1);
+      }
+      
+      li:focus-within a {
+        outline: none;
+      }
+      
+      ul li ul {
+        
+        visibility: hidden;
+        opacity: 0;
+        min-width: 5rem;
+        position: absolute;
+        transition: all 0.5s ease;
+        margin-top: 1rem;
+        left: 0;
+        display: none;
+      }
+      
+      ul li:hover > ul,
+      ul li:focus-within > ul,
+      ul li ul:hover,
+      ul li ul:focus {
+         visibility: visible;
+         opacity: 1;
+         display: block;
+      }
+      
+      ul li ul li {
+        clear: both;
+        width: 100%;
+      }
+}
+

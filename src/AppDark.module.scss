@@ -1,0 +1,24 @@
+$darkBackground: #141414;
+$darkBtnBg: rgb(68, 68, 68);
+$lightBackground: #ffffff;
+
+
+
+.dark{
+    color: white;
+ 
+    background: rgb(62,0,105);
+    background: radial-gradient(circle, rgba(62,0,105,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+.app{
+    min-height: 100vh;
+    height: 100%;
+    display: grid;
+    grid-template: fit-content(30px) / 1fr;
+
+}
+
+.content{
+   max-width: 1200px;
+}

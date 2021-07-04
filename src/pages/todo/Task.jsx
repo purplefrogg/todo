@@ -8,7 +8,8 @@ export const Task = ({ task, deleteTask, editTask, completeTask }) => {
         deleteTask(id)
     }
     const onComplete = (e) => {
-        completeTask(true, id)
+        
+        completeTask(e.currentTarget.checked, id)
         }
     const activateEditMode = () => {
         setEditMode(true)
@@ -21,11 +22,11 @@ export const Task = ({ task, deleteTask, editTask, completeTask }) => {
         setTaskText(e.currentTarget.value)
     }
     return (<div>
-        <input type='checkbox' onClick={onComplete} defaultChecked={completed} />
+        <input type='checkbox' onChange={onComplete} defaultChecked={completed} />
         {editMode &&
             <input autoFocus={true} onBlur={deactivateEditMode} onChange={onTextChange}
                 value={taskText}></input>}
-        {!editMode && <span>{id + '. ' + text}</span>}
+        {!editMode && <>{id + '. ' + text}</>}
         <button onClick={activateEditMode}>edit</button>
         <button onClick={onDelete}>del</button>
     </div>)

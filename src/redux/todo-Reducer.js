@@ -5,7 +5,7 @@ const EDIT_TASK = "todo/EDIT_TASK"
 const COMPLETE_TASK = "todo/COMPLETE_TASK"
 
 const initialState = {
-    tasks: [{ id: 0, text: 'hello', completed: false }],
+    tasks: [{ id: 1, text: 'hello', completed: false }],
    
 }
 const todoReducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const todoReducer = (state = initialState, action) => {
             return {
                 ...state, tasks: [...state.tasks, {
                     id:
-                        state.tasks.length ? state.tasks[state.tasks.length - 1].id + 1 : 0, ...action.task, completed: false
+                        state.tasks.length ? state.tasks[state.tasks.length - 1].id + 1 : 1, ...action.task, completed: false
                 }]
             }
         case DELETE_TASK:

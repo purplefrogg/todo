@@ -1,6 +1,9 @@
 @import-normalize; /* bring in normalize.css styles */
 
 /* rest of app styles */
+html{
+    line-height: 1.2;
+}
 body{
     padding: 0;
     margin: 0;

@@ -17,15 +17,27 @@ const ToDo = ({ ...props }) => {
     }
     let filteredTasks = filter === 'Completed' ? tasks.filter(task => task.completed === true) :
         filter === 'Incomplete' ? tasks.filter(task => task.completed === false) : tasks
-    return (<div>
+    return (<div className={style.todo}>
         <ToDoAdd addTask={props.addTask} />
-        <button value='All' onClick={changeFilterAll}>all</button>
-        <button value='Incomplete' onClick={changeFilterAll}>incomplete</button>
-        <button value='Completed' onClick={changeFilterAll}>completed</button>
+        <div className={style.buttons}>
+            <span>all
+            <input type="radio" name="filter" defaultChecked='true' id="1" value='All'  onClick={changeFilterAll} /></span>
+            <span>incomplete
+            <input type="radio" name="filter" id="2" value='Incomplete' onClick={changeFilterAll}/></span> 
+            <span>completed
+            <input type="radio" name="filter" id="3" value='Completed' onClick={changeFilterAll}/>
+           </span>
+            
+        </div>
         <div className={style.Tasks}>
             {filteredTasks.map(task => <Task deleteTask={props.deleteTask} editTask={props.editTask}
                 completeTask={props.completeTask} key={task.id} task={task} />)}
         </div>
+        <div>
+            <button>left</button>
+            <button>right</button>
+        </div>
+
         <button onClick={onDeleteAllTasks}>delete all</button>
     </div>)
 }
