@@ -20,6 +20,7 @@ export const Header = () => {
                     <ul className="dropdown" aria-label="submenu">
                         <li><NavLink to="/PasswordGenerator">Password Generator</NavLink></li>
                         <li><NavLink to="/todo">todo</NavLink></li>
+                         <li><NavLink to="/Cryptocurrency">crypto</NavLink></li>
                     </ul>
                 </li>
             </ul>

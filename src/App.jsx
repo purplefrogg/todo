@@ -1,12 +1,15 @@
 import style from './App.module.scss';
 import { Header } from './components/header/Header';
 import Todo from './pages/todo/ToDo'
-import { Provider, useSelector } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import store from './redux/store';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PasswordGenerator from './pages/PasswordGenerator/PassordGenerator';
+import Cryptocurrency, { CryptoPage } from './pages/crypto/CryptoPage';
 
 const App = () => {
+  const dispatch = useDispatch()
+  CryptoPage(dispatch)
   const theme = useSelector((state) => state.app.theme)
   return (
     <div className={`${style.app} ${theme === 'dark' ? style.dark : style.light}`}>
@@ -14,11 +17,12 @@ const App = () => {
       <div className={style.content}>
         <Switch>
           <Route path="/todo" component={Todo}></Route>
-          
+          <Route path="/Cryptocurrency" component={Cryptocurrency}></Route>
           <Route path="/PasswordGenerator" component={PasswordGenerator}></Route>
           <Route path="/"><div>page not found!</div></Route>
         </Switch>
       </div>
+
     </div>
   );
 }
