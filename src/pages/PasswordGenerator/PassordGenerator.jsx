@@ -15,10 +15,14 @@ const PasswordGenerator = () => {
     const changingPassLength = (e) =>{
         setPasswordLength(e.currentTarget.value)
     }
+    const onCopy = (e) => {
+        navigator.clipboard.writeText(e.currentTarget.value);
+    }
     return <div>
         <input type="range" min='5' max='20' defaultValue={PasswordLength} onChange={changingPassLength} />
         {generatedPass}
         <br></br>
+        <button onClick={onCopy} value={generatedPass}>copy</button>
         <button onClick={generatingPassword}>generate</button>
     </div>
 }

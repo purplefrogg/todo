@@ -6,7 +6,7 @@ export const instance = axios.create({
 
 export const cryptoApi = ({
     price() {return instance.get(`/simple/price?ids=bitcoin&vs_currencies=usd`).then(res => res.data)},
-    coinMarkets() {
-        return instance.get(`/coins/markets?vs_currency=usd`).then(res => res.data)
+    coinMarkets(currency) {
+        return instance.get(`/coins/markets?vs_currency=${currency}`).then(res => res.data)
     }
 })

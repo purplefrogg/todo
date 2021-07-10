@@ -3,21 +3,21 @@ $darkBackground: #141414;
 
 
 .dark{
-    color: white;
-    --textColor: var(--textColor);
-    --backgroundColor1: rgb(62,0,105);
-    --backgroundColor2: radial-gradient(circle, rgba(62,0,105,1) 0%, rgba(0,0,0,1) 100%); 
-    background: rgb(62,0,105);
-    background: radial-gradient(circle, rgba(62,0,105,1) 0%, rgba(0,0,0,1) 100%);
+   
+    --textColor: white;
+    --MainColor1: rgb(255, 255, 255);
+    --backgroundColor1: rgb(32, 32, 32);
+    --backgroundColor2: rgb(24, 24, 24); 
+    color: var(--MainColor1);
+    background: var(--backgroundColor1);
 }
 .light{
     --textColor: black;
-    --backgroundColor1: rgb(255,255,255); 
-    --backgroundColor2: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(228,189,255,1) 100%); 
-    color: var(--textColor);
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(228,189,255,1) 100%); 
- }
+    --MainColor1: rgb(0, 0, 0);
+    --backgroundColor1: rgb(241, 241, 241);
+    --backgroundColor2: rgb(247, 247, 247); 
+    color: var(--MainColor1);
+    background: var(--backgroundColor1); }
 .app{
     overflow-wrap: break-word;
     min-height: 100vh;
@@ -26,4 +26,9 @@ $darkBackground: #141414;
     display: grid;
     grid-template: fit-content(30px) / 1fr;
 
+}
+.content{
+    margin: 0px auto 5px;
+    width: 100%;
+    max-width: 1200px;
 }

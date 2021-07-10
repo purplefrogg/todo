@@ -3,13 +3,18 @@ import { changeTheme } from '../../redux/app-Reducer'
 import { Clock } from '../clock/Clock'
 import style from './Header.module.scss'
 import { NavLink } from 'react-router-dom'
+import { setCurrency } from '../../redux/crypto-Reducer'
 
 
 export const Header = () => {
-    const theme = useSelector((state) => state.app.theme)
     const dispatch = useDispatch()
+    const theme = useSelector((state) => state.app.theme)
+    const currency = useSelector((state) => state.crypto.currency)
     const onChangeTheme = () => {
         theme === 'dark' ? dispatch(changeTheme('light')) : dispatch(changeTheme('dark'))
+    }
+    const onChangeCurrency = () => {
+        currency === 'usd' ? dispatch(setCurrency('rub')) : dispatch(setCurrency('usd'))
     }
     return (<nav className={style.Header}>
         <Clock className={style.clock + ' ' + style.item} />
@@ -25,6 +30,7 @@ export const Header = () => {
                 </li>
             </ul>
         </div>
+        <button onClick={onChangeCurrency}>{currency}</button>
         <button onClick={onChangeTheme} className={style.item + ' ' + style.btn}>
             {theme === 'light' ? '🌞' : '🌛'}</button>
     </nav>)

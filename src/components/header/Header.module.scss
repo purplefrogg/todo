@@ -1,17 +1,18 @@
 
 .Header{
     display: flex;
-    margin: 5px auto;
+    margin: 0px auto 5px;
     width: 100%;
     max-width: 1200px;
     justify-content: space-around;
     flex-direction: row;
+    background-color: var(--backgroundColor2);
     .item{
       
     }
    .clock{
         font-size: 22px;
-        text-shadow: 0 0 5px blueviolet;
+        text-shadow: 0 0 5px var(--MainColor1);
    }
    .btn{
        background: #000;
@@ -52,7 +53,7 @@
       
       li:hover,
       li:focus-within {
-        background-color: var(--backgroundColor1);
+        background-color: var(--backgroundColor2);
       }
       
       li:focus-within a {
