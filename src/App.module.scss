@@ -1,11 +1,7 @@
-$darkBackground: #141414;
-
-
-
 .dark{
    
     --textColor: white;
-    --MainColor1: rgb(255, 255, 255);
+    --MainColor1: hsl(0, 0%, 100%);
     --backgroundColor1: rgb(32, 32, 32);
     --backgroundColor2: rgb(24, 24, 24); 
     color: var(--MainColor1);
@@ -13,11 +9,12 @@ $darkBackground: #141414;
 }
 .light{
     --textColor: black;
-    --MainColor1: rgb(0, 0, 0);
-    --backgroundColor1: rgb(241, 241, 241);
-    --backgroundColor2: rgb(247, 247, 247); 
+    --MainColor1: hsl(0, 0%, 0%);
+    --backgroundColor1: hsl(0, 0%, 95%);
+    --backgroundColor2: hsl(0, 0%, 97%); 
     color: var(--MainColor1);
-    background: var(--backgroundColor1); }
+    background: var(--backgroundColor1); 
+}
 .app{
     overflow-wrap: break-word;
     min-height: 100vh;
@@ -25,6 +22,7 @@ $darkBackground: #141414;
     height: 100%;
     display: grid;
     grid-template: fit-content(30px) / 1fr;
+    transition: background-color 0.1s ease;
 
 }
 .content{

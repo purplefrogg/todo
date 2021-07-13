@@ -4,10 +4,14 @@ import { ToDoAdd } from './ToDoAdd'
 import { addTask, deleteTask, deleteAllTasks, editTask, completeTask } from '../../redux/todo-Reducer';
 import { Task } from './Task';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 const ToDo = ({ ...props }) => {
     const tasks = useSelector((state) => state.todo.tasks)
+    useEffect(() => {
+        localStorage.setItem('tasksLS', JSON.stringify(tasks))
+    }, [tasks])
     const [filter, setFilter] = useState('All')
     const changeFilterAll = (e) => {
         setFilter(e.currentTarget.value)
@@ -30,7 +34,7 @@ const ToDo = ({ ...props }) => {
             
         </div>
         <div className={style.Tasks}>
-            {filteredTasks.map(task => <Task deleteTask={props.deleteTask} editTask={props.editTask}
+            {filteredTasks && filteredTasks.map(task => <Task deleteTask={props.deleteTask} editTask={props.editTask}
                 completeTask={props.completeTask} key={task.id} task={task} />)}
         </div>
         <div>

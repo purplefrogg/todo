@@ -1,12 +1,13 @@
 const CHANGE_THEME = 'app/CHANGE_THEME'
 
 const initialState = {
-   theme: 'light'
+   theme: localStorage.getItem('themeLS')
 }
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_THEME:
-            return {...state, theme: action.payload}
+            localStorage.setItem('themeLS', action.payload)
+            return {...state,  theme: action.payload}
         default:
             return state
     }

@@ -5,7 +5,7 @@ const EDIT_TASK = "todo/EDIT_TASK"
 const COMPLETE_TASK = "todo/COMPLETE_TASK"
 
 const initialState = {
-    tasks: [{ id: 1, text: 'hello', completed: false }],
+    tasks:  JSON.parse(localStorage.getItem('tasksLS')),
    
 }
 const todoReducer = (state = initialState, action) => {
