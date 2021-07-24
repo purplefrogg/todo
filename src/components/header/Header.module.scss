@@ -11,7 +11,9 @@
   
    .clock{
         font-size: 22px;
-        text-shadow: 0 0 5px var(--MainColor1);
+        &:hover{
+          text-shadow: 0 0 5px var(--MainColor1);
+        }
    }
    .btn{
        background: #000;

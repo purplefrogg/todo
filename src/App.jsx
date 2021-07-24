@@ -6,7 +6,7 @@ import store from './redux/store';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PasswordGenerator from './pages/PasswordGenerator/PasswordGenerator';
 import CryptoMarkets from './pages/crypto/CryptoPage';
-import DAW from './pages/DAW/DAW';
+import Daw from './pages/daw/Daw';
 
 const App = () => {
   const theme = useSelector((state) => state.app.theme)
@@ -17,7 +17,7 @@ const App = () => {
         <Switch>
           <Route path="/todo" component={Todo}></Route>
           <Route path="/Cryptocurrency" component={CryptoMarkets}></Route>
-          <Route path="/DAW" component={DAW}></Route>
+          <Route path="/daw" component={Daw}></Route>
           <Route path="/PasswordGenerator" component={PasswordGenerator}></Route>
           <Route path="/"><div>page not found!</div></Route>
         </Switch>

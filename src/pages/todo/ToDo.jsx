@@ -1,13 +1,14 @@
-import { connect, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import style from './ToDo.module.scss'
 import { ToDoAdd } from './ToDoAdd'
-import { addTask, deleteTask, deleteAllTasks, editTask, completeTask } from '../../redux/todo-Reducer';
 import { Task } from './Task';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { deleteAllTasks } from '../../redux/todo-Reducer';
 
 
-const ToDo = ({ ...props }) => {
+const ToDo = () => {
+    const dispatch = useDispatch()
     const tasks = useSelector((state) => state.todo.tasks)
     useEffect(() => {
         localStorage.setItem('tasksLS', JSON.stringify(tasks))
@@ -17,25 +18,29 @@ const ToDo = ({ ...props }) => {
         setFilter(e.currentTarget.value)
     }
     const onDeleteAllTasks = () => {
-        props.deleteAllTasks()
+        dispatch(deleteAllTasks())
     }
     let filteredTasks = filter === 'Completed' ? tasks.filter(task => task.completed === true) :
         filter === 'Incomplete' ? tasks.filter(task => task.completed === false) : tasks
     return (<div className={style.todo}>
-        <ToDoAdd addTask={props.addTask} />
+        <ToDoAdd />
         <div className={style.buttons}>
-            <span>all
-            <input type="radio" name="filter" defaultChecked='true' id="1" value='All'  onClick={changeFilterAll} /></span>
-            <span>incomplete
-            <input type="radio" name="filter" id="2" value='Incomplete' onClick={changeFilterAll}/></span> 
-            <span>completed
-            <input type="radio" name="filter" id="3" value='Completed' onClick={changeFilterAll}/>
-           </span>
-            
+            <span>
+                <label htmlFor="1">all</label>
+                <input type="radio" name="filter" defaultChecked='true' id="1" value='All' onClick={changeFilterAll} />
+            </span>
+            <span>
+                <label htmlFor="2">incomplete</label>
+                <input type="radio" name="filter" id="2" value='Incomplete' onClick={changeFilterAll} />
+            </span>
+            <span>
+                <label htmlFor="3">completed</label>
+                <input type="radio" name="filter" id="3" value='Completed' onClick={changeFilterAll} />
+            </span>
+
         </div>
         <div className={style.Tasks}>
-            {filteredTasks && filteredTasks.map(task => <Task deleteTask={props.deleteTask} editTask={props.editTask}
-                completeTask={props.completeTask} key={task.id} task={task} />)}
+            {filteredTasks && filteredTasks.map(task => <Task key={task.id} task={task} />)}
         </div>
         <div>
             <button>left</button>
@@ -48,8 +53,4 @@ const ToDo = ({ ...props }) => {
 
 
 
-export default connect(null,
-    {
-        addTask, deleteTask, deleteAllTasks,
-        editTask, completeTask,
-    })(ToDo)
+export default ToDo

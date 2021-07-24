@@ -1,21 +1,24 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteTask, editTask, completeTask } from '../../redux/todo-Reducer';
 
-export const Task = ({ task, deleteTask, editTask, completeTask }) => {
+export const Task = ({ task }) => {
+    const dispatch = useDispatch()
     let  {text, id, completed} = task
     let [editMode, setEditMode] = useState(false)
     let [taskText, setTaskText] = useState(text)
     const onDelete = () => {
-        deleteTask(id)
+        dispatch(deleteTask(id))
     }
     const onComplete = (e) => {
         
-        completeTask(e.currentTarget.checked, id)
+        dispatch(completeTask(e.currentTarget.checked, id))
         }
     const activateEditMode = () => {
         setEditMode(true)
     }
     const deactivateEditMode = () => {
-        !taskText ? deleteTask(id) : editTask(taskText, id)
+        !taskText.trim() ? dispatch(deleteTask(id)) : dispatch(editTask(taskText, id))
         setEditMode(false)
     }
     const onTextChange = e => {

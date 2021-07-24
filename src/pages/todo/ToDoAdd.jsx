@@ -1,17 +1,20 @@
 import { Field, Form, Formik } from 'formik'
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../redux/todo-Reducer';
 import { required } from '../../utils/validators';
 import style from './ToDo.module.scss'
 
 
 
-export let ToDoAdd = (props) => {
+export let ToDoAdd = () => {
+    const dispatch = useDispatch()
     return (<div>
         <Formik
             initialValues={{
                 text: '',
             }}
             onSubmit={(values, { resetForm, initialValues }) => {
-                props.addTask(values)
+                dispatch(addTask(values))
                 resetForm(initialValues)
             }}
         >
