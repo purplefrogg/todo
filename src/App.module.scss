@@ -26,7 +26,10 @@
 
 }
 .content{
-    margin: 0px auto 5px;
+    display: flex;
+    margin: 0px auto;
     width: 100%;
     max-width: 1200px;
+    overflow: auto;
+    //padding: 0px 0 5px;
 }

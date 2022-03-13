@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import AudioTrack from "./AudioTrack";
-import {setAudioTrack} from '../../redux/daw-Reducer'
+import {setAudioTrack, setToggleIsTrigger} from '../../redux/daw-Reducer'
 import style from './daw.module.scss'
-import thrill from './thrill-pill-egor-krid-morgenshtern-grustnaya-pesnya-mp3.mp3'
+
 
 const Daw = () =>{
+
+ 
   const audioTracks = useSelector((state) => state.daw.audioTracks)
   const dispatch = useDispatch()
   let onLoadAudio = (event) => {
@@ -14,21 +16,28 @@ const Daw = () =>{
       reader.onload = (e) => {
         dispatch(setAudioTrack(e.target.result))
       };
-      reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(event.target.files[0])
     }
+    
   }
-  const dates = [true, false, true, true]
-  const play = () => {
+  let onCreateAudioTrack = () =>{
+    
+    dispatch(setAudioTrack())
   }
-  let mappedAudioTracks = audioTracks.map((audioTrack) => <AudioTrack data={audioTrack}/>)
-    return <div className={style.Daw}>
+  let triggerAudioTrack = (e) =>{
+    dispatch(setToggleIsTrigger(e.key))
+  } 
+  let inTriggerAudioTrack = (e) =>{
+    console.log(e.key)
+
+  }
+  let mappedAudioTracks = audioTracks.map((props) => <AudioTrack key={props.id} {...props}/>)
+    return <div className={style.Daw} tabIndex="0" autoFocus onKeyDown={triggerAudioTrack}
+     onKeyUp={inTriggerAudioTrack}>
         <input type="file" onInput={onLoadAudio} />
         {mappedAudioTracks}
-        <input type="checkbox" />
-        <input type="checkbox" />
-        <input type="checkbox" />
-        <input type="checkbox" />
-        <button onClick={play}>play</button>
+       
+       <button onClick={onCreateAudioTrack}>create</button>
     </div>
 }
 

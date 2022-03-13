@@ -1,7 +1,8 @@
 const CHANGE_THEME = 'app/CHANGE_THEME'
 
 const initialState = {
-   theme: localStorage.getItem('themeLS')
+   theme: localStorage.getItem('themeLS'),
+   audioContext: new AudioContext()
 }
 const appReducer = (state = initialState, action) => {
     switch (action.type) {

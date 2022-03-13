@@ -26,11 +26,11 @@ export const Task = ({ task }) => {
     }
     return (<div>
         <input type='checkbox' onChange={onComplete} defaultChecked={completed} />
+        <span>{id}. </span>
         {editMode &&
             <input autoFocus={true} onBlur={deactivateEditMode} onChange={onTextChange}
                 value={taskText}></input>}
-        {!editMode && <>{id + '. ' + text}</>}
-        <button onClick={activateEditMode}>edit</button>
+        {!editMode && <span onDoubleClick={activateEditMode}>{text}</span>}
         <button onClick={onDelete}>del</button>
     </div>)
 }
